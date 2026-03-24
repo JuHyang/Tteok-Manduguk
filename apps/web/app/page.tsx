@@ -467,6 +467,10 @@ export default function Home() {
 
   return (
     <div className={styles.page}>
+      <div className={styles.decor} aria-hidden>
+        <img src="/bowl-rim.svg" alt="" className={styles.decorBowl} />
+        <img src="/steam.svg" alt="" className={styles.decorSteam} />
+      </div>
       <div className={styles.frame}>
         <header className={styles.header}>
           <div>
@@ -496,6 +500,18 @@ export default function Home() {
                     ? "국 이었던것"
                     : getSoupName(bowl)
                   : "빈 슬롯";
+                const stickers = bowl
+                  ? [
+                      bowl.hasSoup ? "국" : null,
+                      ...Array.from(
+                        new Set(
+                          bowl.ingredients.map((item) =>
+                            getIngredientType(item),
+                          ),
+                        ),
+                      ).filter((item) => item === "떡" || item === "만두"),
+                    ].filter(Boolean)
+                  : [];
                 return (
                   <button
                     key={`slot-${index}`}
@@ -515,6 +531,28 @@ export default function Home() {
                       )}
                     </div>
                     <div className={styles.cupBody}>
+                      {stickers.length > 0 && (
+                        <div className={styles.bowlStickers}>
+                          {stickers.map((label, stickerIndex) => (
+                            <span
+                              key={`${label}-${stickerIndex}`}
+                              className={styles.stickerBadge}
+                            >
+                              <img
+                                src={
+                                  label === "국"
+                                    ? "/icon-soup.svg"
+                                    : label === "떡"
+                                      ? "/icon-ricecake.svg"
+                                      : "/icon-dumpling.svg"
+                                }
+                                alt=""
+                              />
+                              {label}
+                            </span>
+                          ))}
+                        </div>
+                      )}
                       <p>{bowl ? (bowl.hasSoup ? name : "빈 그릇") : name}</p>
                       <div className={styles.ingredientList}>
                         {bowl && bowl.ingredients.length > 0 ? (
@@ -554,6 +592,25 @@ export default function Home() {
                     } ${item ? styles.filledSlot : ""}`}
                   >
                     <span className={styles.slotIndex}>{index + 1}</span>
+                    {item && (
+                      <img
+                        className={styles.handIcon}
+                        src={
+                          item.kind === "bowl"
+                            ? item.bowl.hasSoup
+                              ? "/icon-soup.svg"
+                              : "/bowl-rim.svg"
+                            : item.kind === "soup"
+                              ? "/icon-soup.svg"
+                              : getIngredientType(item.name) === "떡"
+                                ? "/icon-ricecake.svg"
+                                : getIngredientType(item.name) === "만두"
+                                  ? "/icon-dumpling.svg"
+                                  : "/icon-soup.svg"
+                        }
+                        alt=""
+                      />
+                    )}
                     <span>{item ? getHandLabel(item) : "비어있음"}</span>
                   </button>
                 ))}
