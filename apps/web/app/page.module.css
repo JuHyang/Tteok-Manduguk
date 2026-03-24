@@ -1,0 +1,326 @@
+.page {
+  --cream: #fff4e6;
+  --peach: #f7c9a3;
+  --berry: #b6465f;
+  --leaf: #2b6a4f;
+  --ink: #2a1a13;
+  --sand: #fdf9f2;
+  --shadow: rgba(46, 25, 14, 0.12);
+
+  min-height: 100svh;
+  background: radial-gradient(
+    circle at top,
+    #ffe9d6 0%,
+    #fef7ef 45%,
+    #f8f2ea 100%
+  );
+  color: var(--ink);
+  padding: 32px 24px 60px;
+  font-family: var(--font-body), "Apple SD Gothic Neo", sans-serif;
+}
+
+.frame {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+}
+
+.header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  animation: floatIn 0.6s ease-out;
+}
+
+.kicker {
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.3em;
+  color: rgba(42, 26, 19, 0.5);
+}
+
+.title {
+  font-family: var(--font-display), "Gowun Batang", serif;
+  font-size: clamp(32px, 4vw, 46px);
+  margin-top: 8px;
+}
+
+.recipeCard {
+  background: var(--sand);
+  border: 1px solid rgba(46, 25, 14, 0.08);
+  box-shadow: 0 20px 40px var(--shadow);
+  padding: 18px 22px;
+  border-radius: 18px;
+  min-width: 220px;
+  display: grid;
+  gap: 6px;
+  justify-items: end;
+}
+
+.recipeLabel {
+  font-size: 12px;
+  color: rgba(42, 26, 19, 0.6);
+}
+
+.recipeText {
+  font-size: 20px;
+  color: var(--berry);
+  font-weight: 700;
+}
+
+.recipeHint {
+  font-size: 12px;
+  color: rgba(42, 26, 19, 0.45);
+}
+
+.board {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
+  gap: 24px;
+}
+
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  color: rgba(42, 26, 19, 0.7);
+  margin-bottom: 10px;
+}
+
+.tableSection {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.table {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 14px;
+}
+
+.empty {
+  padding: 16px;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px dashed rgba(42, 26, 19, 0.2);
+  color: rgba(42, 26, 19, 0.55);
+}
+
+.cup {
+  border: none;
+  background: rgba(255, 255, 255, 0.88);
+  border-radius: 18px;
+  padding: 14px;
+  display: grid;
+  gap: 10px;
+  cursor: pointer;
+  box-shadow: 0 12px 24px var(--shadow);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border 0.2s ease;
+  text-align: left;
+}
+
+.cup:hover {
+  transform: translateY(-2px);
+}
+
+.selected {
+  outline: 2px solid var(--berry);
+  transform: translateY(-4px);
+  box-shadow: 0 18px 30px rgba(182, 70, 95, 0.2);
+}
+
+.cupHeader {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.cupBody p {
+  font-size: 15px;
+  margin-bottom: 8px;
+}
+
+.ingredientList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.ingredient {
+  background: var(--cream);
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 12px;
+}
+
+.tag {
+  border-radius: 999px;
+  font-size: 11px;
+  padding: 2px 8px;
+}
+
+.tagGood {
+  background: rgba(43, 106, 79, 0.15);
+  color: var(--leaf);
+}
+
+.tagWarn {
+  background: rgba(182, 70, 95, 0.14);
+  color: var(--berry);
+}
+
+.hand {
+  background: rgba(255, 255, 255, 0.75);
+  border-radius: 18px;
+  padding: 16px;
+  border: 1px solid rgba(42, 26, 19, 0.08);
+}
+
+.handSlots {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 10px;
+}
+
+.handSlot {
+  border: 1px dashed rgba(42, 26, 19, 0.2);
+  background: rgba(255, 255, 255, 0.75);
+  border-radius: 12px;
+  padding: 10px;
+  display: grid;
+  gap: 6px;
+  text-align: left;
+  font-size: 12px;
+  color: rgba(42, 26, 19, 0.75);
+}
+
+.handSlot:hover {
+  border-color: rgba(182, 70, 95, 0.4);
+}
+
+.filledSlot {
+  border-style: solid;
+  background: #fff;
+  color: rgba(42, 26, 19, 0.95);
+}
+
+.selectedSlot {
+  border-color: var(--berry);
+  box-shadow: 0 10px 22px rgba(182, 70, 95, 0.18);
+}
+
+.slotIndex {
+  font-size: 11px;
+  color: rgba(42, 26, 19, 0.5);
+}
+
+.actionSection {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.actions {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 12px;
+}
+
+.actionItem button {
+  width: 100%;
+  border: 1px solid rgba(42, 26, 19, 0.1);
+  background: rgba(255, 255, 255, 0.92);
+  padding: 12px 14px;
+  border-radius: 14px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+  transition:
+    transform 0.2s ease,
+    border 0.2s ease;
+  font-family: var(--font-body), "Apple SD Gothic Neo", sans-serif;
+}
+
+.actionItem small {
+  color: rgba(42, 26, 19, 0.55);
+  font-size: 12px;
+}
+
+.selectedAction button {
+  border-color: var(--berry);
+  box-shadow: 0 10px 22px rgba(182, 70, 95, 0.2);
+  transform: translateX(2px);
+}
+
+.log {
+  background: rgba(255, 255, 255, 0.82);
+  border-radius: 18px;
+  padding: 16px;
+  border: 1px solid rgba(42, 26, 19, 0.08);
+}
+
+.log ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 13px;
+  color: rgba(42, 26, 19, 0.8);
+}
+
+.hints {
+  font-size: 12px;
+  color: rgba(42, 26, 19, 0.6);
+  display: grid;
+  gap: 4px;
+}
+
+.muted {
+  color: rgba(42, 26, 19, 0.45);
+  font-size: 12px;
+}
+
+@keyframes floatIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 960px) {
+  .board {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .page {
+    padding: 24px 16px 40px;
+  }
+
+  .recipeCard {
+    width: 100%;
+    justify-items: start;
+  }
+
+  .cup {
+    padding: 12px;
+  }
+}
