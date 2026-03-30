@@ -19,7 +19,8 @@
   );
   color: var(--ink);
   padding: 32px 24px 60px;
-  font-family: var(--font-body), "Apple SD Gothic Neo", sans-serif;
+  font-family:
+    "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
   position: relative;
   overflow: hidden;
 }
@@ -110,7 +111,7 @@
 }
 
 .title {
-  font-family: var(--font-display), "Gowun Batang", serif;
+  font-family: "Nanum Myeongjo", "Apple SD Gothic Neo", serif;
   font-size: clamp(32px, 4vw, 46px);
   margin-top: 8px;
 }
@@ -353,7 +354,8 @@
   transition:
     transform 0.2s ease,
     border 0.2s ease;
-  font-family: var(--font-body), "Apple SD Gothic Neo", sans-serif;
+  font-family:
+    "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
 }
 
 .actionItem small {

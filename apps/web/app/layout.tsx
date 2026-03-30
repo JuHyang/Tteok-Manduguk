@@ -1,19 +1,6 @@
 import type { Metadata } from "next";
-import { Gowun_Batang, Gowun_Dodum } from "next/font/google";
 
 import "./globals.css";
-
-const gowunBatang = Gowun_Batang({
-  weight: ["400", "700"],
-  subsets: ["latin"],
-  variable: "--font-display",
-});
-
-const gowunDodum = Gowun_Dodum({
-  weight: "400",
-  subsets: ["latin"],
-  variable: "--font-body",
-});
 
 export const metadata: Metadata = {
   title: "스무디 제시 게임",
@@ -27,9 +14,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ko">
-      <body className={`${gowunBatang.variable} ${gowunDodum.variable}`}>
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }
